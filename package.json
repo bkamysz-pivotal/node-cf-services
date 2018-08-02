@@ -1,0 +1,23 @@
+{
+  "name": "node-cf-services",
+  "version": "1.0.0",
+  "description": "",
+  "main": "app.js",
+  "dependencies": {
+    "debug": "^2.6.9",
+    "express": "^4.16.3",
+    "mysql": "^2.16.0",
+    "pg": "^7.4.3"
+  },
+  "devDependencies": {},
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/bkamysz-pivotal/node-cf-services.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/bkamysz-pivotal/node-cf-services/issues"
+  },
+  "homepage": "https://github.com/bkamysz-pivotal/node-cf-services#readme"
+}
