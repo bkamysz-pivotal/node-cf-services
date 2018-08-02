@@ -1,0 +1,4 @@
+---
+applications:
+- name: nodebroker
+  command: node app.js

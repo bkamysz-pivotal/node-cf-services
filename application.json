@@ -1,0 +1,37 @@
+{
+  "elephantsql": [
+    {
+      "name": "my-db",
+      "instance_name": "my-db",
+      "binding_name": "",
+      "credentials": {
+        "uri": "**********",
+        "max_conns": "5"
+      },
+      "syslog_drain_url": null,
+      "volume_mounts": [],
+      "label": "elephantsql",
+      "provider": null,
+      "plan": "turtle",
+      "tags": [
+        "Data Stores",
+        "Web-based",
+        "Open Source",
+        "User Provisioning",
+        "PaaS",
+        "Single Sign-On",
+        "Windows",
+        "New Product",
+        "Mac",
+        "Android",
+        "Developer Tools",
+        "Data Store",
+        "postgresql",
+        "Buyable",
+        "relational",
+        "Importable",
+        "IT Management"
+      ]
+    }
+  ]
+}
