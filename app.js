@@ -1,10 +1,14 @@
+'use strict';
+
 const express = require('express');
 const app = express();
-var cf = require('./cf-services.js');
+const cfServices = require('./cf-services.js');
 
-var mydb;
-if (cf.postgresServices.length > 0) {
-    var mydb = cf.postgresServices[0];
+cfServices.init();
+
+let mydb = undefined;
+if (cfServices.postgresServices.length > 0) {
+    mydb = cfServices.postgresServices[0];
 }
 
 if (mydb) {

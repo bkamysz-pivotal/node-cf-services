@@ -1,23 +1,27 @@
+'use strict';
+
 const {Pool} = require('pg');
 const POSTGRES = 'postgresql';
 
-var cfpg = {
-    getPostgresServices: function (vcap_services) {
-        var service;
-        var pools = [];
+const cfServicesPostgres = {
+    isPostgresService: (service) => {
+        return !!(service && service.tags && service.tags.indexOf(POSTGRES) !== -1);
+    },
+    getPostgresServices: (services) => {
+        let pools = [];
 
-        Object.keys(vcap_services).forEach(function (key) {
-                service = vcap_services[key][0];
-                if (service.tags.indexOf(POSTGRES) != -1) {
+        services.forEach(service => {
+            if (cfServicesPostgres.isPostgresService(service)) {
+                if (service.credentials && service.credentials.uri) {
                     pools.push(new Pool({
-                        connectionString: service.credentials.uri,
+                        connectionString: service.credentials.uri
                     }));
                 }
             }
-        );
+        });
 
         return pools;
     }
 };
 
-module.exports = cfpg;
+module.exports = cfServicesPostgres;
