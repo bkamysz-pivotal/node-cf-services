@@ -61,3 +61,8 @@ typings/
 
 .gitignore
 .idea/
+/import.sql
+/application.json
+/manifest.yml
+/app.js
+/.DS_Store
