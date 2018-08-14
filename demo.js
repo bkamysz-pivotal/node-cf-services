@@ -30,30 +30,12 @@ let doCoolStuff = (cfServices) => {
             });
         }
 
-        // let mydb = undefined;
-        // if (cfServices.postgresServices.length > 0) {
-        //     mydb = cfServices.postgresServices[0];
-        // }
-
-        // if (mydb) {
-        //     mydb.query('SELECT * from COMPANY', (err, result) => {
-        //         console.log(result.rows);
-        //     });
-        // }
-        // console.log(cfServices.mongoServices);
-
         if (cfServices.mongoServices.length > 0) {
             cfServices.mongoServices[0].command({'dbStats': 1}, function (err, results) {
                 debugOutput.Mongo = results;
 
                 resolve(debugOutput);
             });
-            // const collection = mydb.collection('startup_log');
-            // // Find some documents
-            // collection.find({}).toArray((err, docs) => {
-            //     console.log("Found the following records");
-            //     console.log(docs);
-            // });
         } else {
             resolve(debugOutput);
         }

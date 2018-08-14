@@ -1,4 +1,4 @@
 ---
 applications:
 - name: nodebroker
-  command: node app.js
+  command: node demo.js
