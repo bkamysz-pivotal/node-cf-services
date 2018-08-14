@@ -3,25 +3,30 @@
 const {Pool} = require('pg');
 const POSTGRES = 'postgresql';
 
-const cfServicesPostgres = {
-    isPostgresService: (service) => {
-        return !!(service && service.tags && service.tags.indexOf(POSTGRES) !== -1);
-    },
-    getPostgresServices: (services) => {
-        let pools = [];
+class CfServicesPostgres {
 
-        services.forEach(service => {
-            if (cfServicesPostgres.isPostgresService(service)) {
-                if (service.credentials && service.credentials.uri) {
+    _isPostgresService(service) {
+        return !!(service && service.tags && service.tags.indexOf(POSTGRES) !== -1);
+    }
+
+    getServices(services) {
+        return new Promise((resolve) => {
+            let pools = [];
+
+            services.forEach(service => {
+                if (this._isPostgresService(service)
+                    && service.credentials && service.credentials.uri) {
+
                     pools.push(new Pool({
                         connectionString: service.credentials.uri
                     }));
+
                 }
-            }
+            });
+
+            resolve(pools);
         });
-
-        return pools;
     }
-};
+}
 
-module.exports = cfServicesPostgres;
+module.exports = CfServicesPostgres;

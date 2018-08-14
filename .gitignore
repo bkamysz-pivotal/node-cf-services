@@ -62,7 +62,11 @@ typings/
 .gitignore
 .idea/
 /import.sql
-/application.json
+application.json
+amqp.json
+mongo.json
+mysql.json
+postgres.json
 /manifest.yml
 /app.js
 /.DS_Store
