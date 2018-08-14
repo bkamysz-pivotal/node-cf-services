@@ -24,6 +24,10 @@ class CfServices {
         this.cfServicesPostgres = new CfServicesPostgres();
     }
 
+    static initialize() {
+        return new CfServices().init();
+    }
+
     init() {
         return new Promise((resolve) => {
             this.parseVCAP();

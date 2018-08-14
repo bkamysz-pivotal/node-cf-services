@@ -2,7 +2,7 @@
   "name": "node-cf-services",
   "version": "1.0.0",
   "description": "",
-  "main": "app.js",
+  "main": "demo.js",
   "engines": {
     "node": "~6.14.3"
   },

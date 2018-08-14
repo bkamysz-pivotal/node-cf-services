@@ -11,6 +11,10 @@ let doCoolStuff = (cfServices) => {
         if (cfServices.amqpServices.length > 0) {
             debugOutput.AMQP = cfServices.amqpServices[0].options;
             debugOutput.AMQP.password = '******';
+
+            let uri = debugOutput.AMQP.url.split(':');
+            uri[2] = '************' + uri[2].substring(uri[2].indexOf('@'));
+            debugOutput.AMQP.url = uri.join(':');
         }
 
         if (cfServices.mysqlServices.length > 0) {
@@ -25,8 +29,7 @@ let doCoolStuff = (cfServices) => {
                 count = count+1;
                 debugOutput[serviceName] = service;
                 let uri = debugOutput[serviceName].options.connectionString.split(':');
-                uri[2] = '************' + uri[2].substring(uri[2].indexOf('@'))
-                debugOutput[serviceName].options.connectionString = uri.join(':');
+                uri[2] = '************' + uri[2].substring(uri[2].indexOf('@'));                debugOutput[serviceName].options.connectionString = uri.join(':');
             });
         }
 
@@ -43,7 +46,7 @@ let doCoolStuff = (cfServices) => {
     });
 };
 
-new CfServices().init().then((cfServices) => {
+CfServices.initialize().then((cfServices) => {
     doCoolStuff(cfServices).then((debugOutput) => {
         console.log(debugOutput);
     });
